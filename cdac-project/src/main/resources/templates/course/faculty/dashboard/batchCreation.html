@@ -1,0 +1,75 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="course/faculty/layout">
+<head>
+<title>Batch Creation</title>
+</head>
+<body>
+
+
+
+	<div layout:fragment="content">
+	<div class="col-md-6">
+		<h1><b>Batch Creation</b></h1>
+		<div class="form-group ">
+		
+			<label>Batch Name</label>
+			<input type="text" class="form-control" placeholder="Batch Name" /> 
+			 
+			<label>Batch Start Date</label>
+			<div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask=""/>
+                </div>
+				
+			 <label>Batch End Date</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask=""/>
+                </div>
+                
+              <label>Course Name</label>
+                  <select class="form-control">
+                 	<option>DAC</option>
+                    <option>DMC</option>
+                    <option>DBDA</option>
+                    <option>IOT</option>
+                  </select>
+                  
+                   <label>Modules</label>
+                 <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"/>
+                      CPP
+                    </label>
+                  </div>
+
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"/>
+                      DS
+                    </label>
+                  </div>
+
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" />
+                     OS
+                    </label>
+                  </div>
+                </div>
+               
+				
+		</div>
+
+	</div>
+	</div>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

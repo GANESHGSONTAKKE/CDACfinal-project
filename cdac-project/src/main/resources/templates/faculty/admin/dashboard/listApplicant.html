@@ -1,0 +1,57 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="faculty/admin/layout">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Applicant List</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tbody><tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Mobile NO</th>
+                  <th>Qualification</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Resume</th>
+                  <th>View</th>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><select>
+               <option value="volvo">On-Hold</option>
+               <option value="saab">Shortlist</option>
+               <option value="Selected">Selected</option>
+                <option value="Rejected">Rejected</option>
+                </select></td>
+                <td><button class="btn btn-primary" name="b1">Download</button></td> 
+                <td><input type="button" class="btn btn-primary" value="show"/></td>
+                </tr>
+               
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+</div>
+
+
+</body>
+</html>

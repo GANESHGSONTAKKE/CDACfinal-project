@@ -1,0 +1,57 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="course/admin/layout">
+<head>
+    <title>Add Faculty</title>
+</head>
+<body>
+<div class="col-md-6">
+	<div layout:fragment="content">
+	
+    	<h1><b>Add Faculty</b></h1>
+		<div class="form-group">
+		<label>Faculty Name</label>
+		<input type="text" class="form-control" /> 
+		</div>
+		
+		   <label>Subject</label>
+                  <select class="form-control">
+                 	<option>CPP</option>
+                    <option>OS</option>
+                    <option>DS</option>
+                    <option>AWP</option>
+                  </select>
+                  
+            <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1"/>
+                      Internal
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option2"/>
+                     External
+                    </label>
+                </div>
+              
+		<label>Module Start Date</label>
+			<div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask=""/>
+                </div>
+               
+         <label>Module End Date</label>
+			<div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask=""/>
+                </div>
+	</div>
+</div>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
