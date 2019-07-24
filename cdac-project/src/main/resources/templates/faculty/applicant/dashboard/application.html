@@ -1,99 +1,116 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="faculty/applicant/layout">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="faculty/applicant/layout">
 <head>
-    <title>Dashboard</title>
+<title>Dashboard</title>
 </head>
 <body>
 
 
 
-<div layout:fragment="content">
-   
-<div class="login-box">
- 
-	<div class="login-box-body">
+	<div layout:fragment="content">
 	
-	<div class="login-logo">
-        <b>Application Form</b>
-    </div>
-        <form th:action="@{/application}" method="post">
-	            <div class="form-group has-feedback">
-	                <input type="text" class="form-control" name="name" placeholder="Name"/>
-	            </div>
-	            <div class="form-group has-feedback">
-	                <input type="email" class="form-control" name="email" placeholder="Email"/>
-	               
-	            </div>
-	            <div class="form-group has-feedback">
-	                <input type="text" class="form-control" name="mobile no" placeholder="Mobile no"/>
-	            </div>
-	            <div class="form-group has-feedback">
-	                <input type="date" class="form-control" name="dob" placeholder="yyyy/mm/dd"/>	                
-	            </div>
-	            <div>
-	            <span>
-	            	Gender :
-	                 &nbsp; <input type="radio"  name="gender" value="Male"/> Male &nbsp;  &nbsp;  &nbsp;
-	                <input type="radio" name="gender" value="Female"/> Female
-	             </span> 
-	            </div>
-	            
-	            <div>
-	            <span>
-	            	Status :
-	                 &nbsp;  &nbsp; <input type="radio"  name="maritalstatus" value="Married"/>  Married &nbsp;  &nbsp;
-	                <input type="radio"  name="maritalstatus" value="Single"/>	 Single       
-	            </span>
-	            </div>	   
-	            <p></p>        
-	            <div class="form-group has-feedback">
-	                <input type="text" class="form-control" name="confirm password" placeholder="Qualification"/>	              
-	            </div>
-            
-               
-           	<div class="form-group has-feedback">
-                 
-                 <select class="form-control">
- 					 <option value="select">Select Technologies</option>
- 					 <option value="select">OOPS</option>
-  					 <option value="os">Operating System</option>
-  					 <option value="db">Database</option>
-  					 <option value="java">Core Java</option>
-  					 <option value="webjava">Web Based Java</option>
-  					 <option value="awp">Advance Web Programming</option>
-  					 <option value="ms">Mean Stack</option>
-  					 <option value="asdm">ASDM</option>
-  					 <option value="ms.net">MS.NET</option>
-				 </select>
-				 
-            </div>
-            
+		<div th:if="${success}">
+			<div class="callout callout-success">
+				<h4>Success!</h4>
+				<p>Application Submitted successfully.</p>
+			</div>		
+		</div>
+		<div class="login-box">
 
-             <div class="form-group has-feedback">
-                <input type="text" class="form-control" name="language" placeholder="Languages known"/>
-               
-            </div>
-             
-            <div class="form-group has-feedback">
-                <input type="text" class="form-control" name="likedin" placeholder="Likedin Link"/>
-  
-            </div>
-             
-            <div class="form-group has-feedback">
-               Upload Resume:  <input type="file" name="file" />
-        
-            </div>
-            <div class="row">
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
-                </div>
-                
-            </div>
-        </form>
-        </div>   
-     </div>    
-        
-    </div>
+			<div class="login-box-body">
+
+				<div class="login-logo">
+					<b>Application Form</b>
+				</div>
+				
+				<form action="#" th:action="@{/submitApplication}"
+					th:object="${applicant}" method="post">
+					<!-- <input type="hidden" th:field="*{applicant_id}" /> -->
+					<div class="form-group has-feedback">
+						<input type="text" class="form-control" name="name"
+							placeholder="Name" th:field="*{name}" />
+					</div>
+					<div class="form-group has-feedback">
+						<input type="email" class="form-control" name="email"
+							placeholder="Email" th:field="*{email}" />
+
+					</div>
+					<div class="form-group has-feedback">
+						<input type="text" class="form-control" name="mobile no"
+							placeholder="Mobile no" th:field="*{mobile}" />
+					</div>
+					<div class="form-group has-feedback">
+						<input type="date" class="form-control" name="dob"
+							placeholder="Date of Birth" th:field="*{dob}" />
+					</div>
+					<div>
+						<span> Gender : &nbsp; <input type="radio" name="gender"
+							value="Male" th:field="*{gender}" /> Male &nbsp; &nbsp; &nbsp; <input
+							type="radio" name="gender" value="Female" th:field="*{gender}" />
+							Female
+						</span>
+					</div>
+
+					<div>
+						<span> Status : &nbsp; &nbsp; <input type="radio"
+							name="maritalstatus" value="Married" th:field="*{marital_status}" />
+							Married &nbsp; &nbsp; <input type="radio" name="maritalstatus"
+							value="Single" th:field="*{marital_status}"/> Single
+						</span>
+					</div>
+					<p></p>
+					<div class="form-group has-feedback">
+						<input type="text" class="form-control" name="qualifications"
+							placeholder="Qualification" th:field="*{qualifications}" />
+					</div>
+
+
+					<div class="form-group has-feedback">
+
+						<select class="form-control" th:field="*{subject_interested}">
+							<option value="select">Select Technologies</option>
+							<option value="select">OOPS</option>
+							<option value="os">Operating System</option>
+							<option value="db">Database</option>
+							<option value="java">Core Java</option>
+							<option value="webjava">Web Based Java</option>
+							<option value="awp">Advance Web Programming</option>
+							<option value="ms">Mean Stack</option>
+							<option value="asdm">ASDM</option>
+							<option value="ms.net">MS.NET</option>
+						</select>
+
+					</div>
+
+
+					<div class="form-group has-feedback">
+						<input type="text" class="form-control" name="language"
+							placeholder="Languages known" th:field="*{languages_known}" />
+
+					</div>
+
+					<div class="form-group has-feedback">
+						<input type="text" class="form-control" name="likedin"
+							placeholder="Likedin Link" th:field="*{linkedin_link}" />
+
+					</div>
+
+					<div class="form-group has-feedback">
+						Upload Resume: <input type="file" name="file" />
+
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
 
 
 

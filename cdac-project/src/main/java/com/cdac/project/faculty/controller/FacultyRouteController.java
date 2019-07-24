@@ -2,10 +2,11 @@ package com.cdac.project.faculty.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.cdac.project.faculty.model.Applicants;
-import com.cdac.project.faculty.repository.ApplicantsDaoImpl;
+import com.cdac.project.faculty.model.Applicant;
+import com.cdac.project.faculty.repository.ApplicantDaoImpl;
 
 @Controller
 public class FacultyRouteController {
@@ -21,7 +22,8 @@ public class FacultyRouteController {
     }
     
     @RequestMapping("/application")
-    public String applicationform() {
+    public String applicationform(Model model) {
+    	model.addAttribute("applicant",new Applicant());
         return "faculty/applicant/dashboard/application";
     }
     
@@ -58,15 +60,15 @@ public class FacultyRouteController {
 
     
 	@Autowired
-	ApplicantsDaoImpl c;
+	ApplicantDaoImpl c;
 	
     @RequestMapping("/insert")
     public String insert() {
     	
     	System.out.print("Helllll");
-    	Applicants obj = new Applicants("amit@gmail.com", "98989098980", "password");
+    	Applicant obj = new Applicant("amit@gmail.com", "98989098980", "password");
     	
-    	c.addStudent(obj);
+    	c.addApplicant(obj);
     	
 		return "Page inserted";
     	

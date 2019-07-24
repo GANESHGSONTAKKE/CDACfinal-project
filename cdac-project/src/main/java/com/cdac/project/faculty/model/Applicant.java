@@ -8,19 +8,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @Entity
 @Table(name= "db_applicant")   
-public class Applicants {
+public class Applicant {
 
 	
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer applicant_id;
 	
 	private String email;
 	private String mobile;
 	private String password;
-	private java.util.Date dob;
+	@DateTimeFormat(iso=ISO.DATE)
+	private Date dob;
 	private String name;
 	private String gender;
 	private String experience;
@@ -29,17 +33,17 @@ public class Applicants {
 	private String marital_status;
 	private String languages_known;
 	private String linkedin_link;
-	private int document_id;
-	private java.util.Date created_timestamp;
-	private java.util.Date updated_timestamp;
+	private Integer document_id;
+	private Date created_timestamp;
+	private Date updated_timestamp;
 
 	
-	public Applicants() {
+	public Applicant() {
 		
 	}
 	
 	
-	public Applicants(String email, String mobile, String password) {
+	public Applicant(String email, String mobile, String password) {
 		super();
 		this.email = email;
 		this.mobile = mobile;
