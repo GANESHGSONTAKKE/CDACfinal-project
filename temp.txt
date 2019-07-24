@@ -1,0 +1,42 @@
+//Dao code
+	@Override
+	@Transactional
+	public List<Applicants> listApplicants() {
+		this.sessionFactory = this.entityManager.unwrap(Session.class).getSessionFactory();
+		Session session= this.sessionFactory.openSession();
+		return session.createQuery("from Applicants").list();
+	}
+
+
+//--------------
+//Rest Controller
+
+package com.cdac.project.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cdac.project.model.Applicants;
+import com.cdac.project.service.IApplicantService;
+
+@RestController
+@RequestMapping("/api/applicants")
+public class ApplicantRestController {
+
+	@Autowired
+	private IApplicantService applicantService; 
+	
+	@GetMapping(path="/", produces="application/json")
+	public List<Applicants> getApplicants(){
+		return applicantService.listApplicants();
+	}
+	
+	
+}
+
+
