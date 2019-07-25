@@ -1,0 +1,43 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="faculty/applicant/layout">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Resume Upload</title>
+</head>
+<body>
+	<div layout:fragment="content">
+
+	<div th:if="${success}">
+			<div th:class="${success}?'callout callout-success':'callout callout-danger'">
+				<h4 th:text="${success}?'Success!':'Failed!'"></h4>
+				<p th:text="${success}?'Resume upload successfully.':'Resume upload failed.'"></p>
+			</div>
+	</div>
+	<!-- <div th:if="${!success}">
+			<div class="callout callout-danger">
+				<h4>Failed!</h4>
+				<p>Resume upload failed.</p>
+			</div>
+	</div> -->
+		
+
+		<div class="box-header with-border">
+			<h3 class="box-title">Upload Resume</h3>
+		</div>
+		<!-- /.box-header -->
+		<!-- form start -->
+		<form method="POST" action="#" th:action="@{/uploadFile}" enctype="multipart/form-data">
+			<div class="box-body">
+				<div class="form-group">
+					<label for="inputFile">File input</label> <input type="file" id="uploadile" name="uploadfile"></input>
+				</div>
+			</div>
+			<!-- /.box-body -->
+			<div class="box-footer">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

@@ -32,6 +32,10 @@ public class FacultyRouteController {
         return "faculty/applicant/dashboard/status";
     }
     
+    @RequestMapping("/resume_upload")
+    public String resumeUpload() {
+    	return "faculty/applicant/dashboard/resume_upload";
+    }
     
     // Admin Side Routes
     

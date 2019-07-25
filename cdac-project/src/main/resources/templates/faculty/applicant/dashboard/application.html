@@ -9,12 +9,12 @@
 
 
 	<div layout:fragment="content">
-	
+
 		<div th:if="${success}">
 			<div class="callout callout-success">
 				<h4>Success!</h4>
 				<p>Application Submitted successfully.</p>
-			</div>		
+			</div>
 		</div>
 		<div class="login-box">
 
@@ -23,9 +23,9 @@
 				<div class="login-logo">
 					<b>Application Form</b>
 				</div>
-				
+
 				<form action="#" th:action="@{/submitApplication}"
-					th:object="${applicant}" method="post">
+					th:object="${applicant}" method="post" enctype="multipart/form-data" id="form">
 					<!-- <input type="hidden" th:field="*{applicant_id}" /> -->
 					<div class="form-group has-feedback">
 						<input type="text" class="form-control" name="name"
@@ -56,7 +56,7 @@
 						<span> Status : &nbsp; &nbsp; <input type="radio"
 							name="maritalstatus" value="Married" th:field="*{marital_status}" />
 							Married &nbsp; &nbsp; <input type="radio" name="maritalstatus"
-							value="Single" th:field="*{marital_status}"/> Single
+							value="Single" th:field="*{marital_status}" /> Single
 						</span>
 					</div>
 					<p></p>
@@ -96,10 +96,12 @@
 
 					</div>
 
-					<div class="form-group has-feedback">
-						Upload Resume: <input type="file" name="file" />
-
-					</div>
+					<!-- <div class="form-group has-feedback">
+						Upload Resume: <input type="file" name="uploadfile"
+							id="uploadfile" />
+						<button type="button" class="btn btn-primary btn-block btn-flat"
+							id="uploadbutton">Upload</button>
+					</div> -->
 					<div class="row">
 						<div class="col-xs-4">
 							<button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
@@ -109,12 +111,11 @@
 				</form>
 			</div>
 		</div>
-
+		
 	</div>
 
 
-
-
+	
 
 </body>
 </html>
