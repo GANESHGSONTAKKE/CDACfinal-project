@@ -1,57 +1,150 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="faculty/admin/layout">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="faculty/admin/layout">
 <head>
-    <title>Dashboard</title>
+<title>Dashboard</title>
 </head>
 <body>
 
 
 
-<div layout:fragment="content">
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Applicant List</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tbody><tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Mobile NO</th>
-                  <th>Qualification</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                  <th>Resume</th>
-                  <th>View</th>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><select>
-               <option value="onhold">On-Hold</option>
-               <option value="shortlisted">Shortlist</option>
-               <option value="selected">Selected</option>
-                <option value="rejected">Rejected</option>
-                </select></td>
-                <td><button class="btn btn-primary" name="b1">Download</button></td> 
-                <td><input type="button" class="btn btn-primary" value="show"/></td>
-                </tr>
-               
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-      </div>
-</div>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header">
+						<h3 class="box-title">Applicant List</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body table-responsive no-padding">
+						<table id="table" class="table table-hover" width="100%"></table>
+
+						<!-- old table -->
+						<!-- <table class="table table-hover">
+							<tbody>
+								<tr>
+									<th>ID</th>
+									<th>Name</th>
+									<th>Mobile NO</th>
+									<th>Qualification</th>
+									<th>Role</th>
+									<th>Status</th>
+									<th>Resume</th>
+									<th>View</th>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>Suraj</td>
+									<td>9876543210</td>
+									<td>BE</td>
+									<td>C++</td>
+									<td><select>
+											<option value="onhold">On-Hold</option>
+											<option value="shortlisted">Shortlist</option>
+											<option value="selected">Selected</option>
+											<option value="rejected">Rejected</option>
+									</select></td>
+									<td><button class="btn btn-primary" name="b1">Download</button></td>
+									<td>
+									<button type="button" class="btn btn-primary"
+				data-toggle="modal" data-target="#applicantModal">More Info</button>
+									</td>
+								</tr>
+
+							</tbody>
+						</table> -->
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+
+			<!-- Testing Modal -->
+
+
+			<!-- Modal -->
+			<div class="modal fade" id="applicantModal" tabindex="-1"
+				role="dialog" aria-labelledby="applicantModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel">Applicant Info</h4>
+						</div>
+						<div class="modal-body">Some Info....</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 </body>
+<div layout:fragment="content-script">
+	<script>
+	function initTable() {
+		return $('.table').dataTable();
+	}
+
+	function tableActions() {
+		//var table = initTable();
+
+		// perform API operations with `table`
+		// ...
+
+		var dataSet = [
+				[ "Tiger Nixon", "System Architect", "Edinburgh", "5421",
+						"2011/04/25", "$320,800" ],
+				[ "Garrett Winters", "Accountant", "Tokyo", "8422",
+						"2011/07/25", "$170,750" ] ];
+		$('.table').DataTable({
+			//data: dataSet,
+			"ajax" : {
+				"url" : "/api/applicants/",
+				"data" : function(data) {
+					console.log(data);
+					//process data before sent to server.
+				}
+			},
+			"columns" : [
+
+			{
+				title : "Name",
+				data : 'name'
+			}, {
+				title : "Email",
+				data : 'email'
+			}, {
+				title : "Mobile No.",
+				data : 'mobile'
+			}, {
+				title : "Gender",
+				data : 'gender'
+			}, {
+				title : "Qualifications",
+				data : 'qualifications'
+			}, {
+				title : "Subject",
+				data: 'subject_interested'
+			},
+			{
+				title: "DOB",
+				data: 'dob'
+			}
+			],
+		});
+
+	}
+
+	tableActions();
+	
+	</script>
+</div>
 </html>

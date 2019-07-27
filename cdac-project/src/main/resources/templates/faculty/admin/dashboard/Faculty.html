@@ -1,32 +1,33 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="faculty/admin/layout">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="faculty/admin/layout">
 <head>
-    <title>Dashboard</title>
+<title>Dashboard</title>
 </head>
 <body>
 
 
 
-<div layout:fragment="content">
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">List of Faculty</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-            
-            <table id="table" class="table table-hover" width="100%"></table>
-            
-              
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-      </div>
-</div>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header">
+						<h3 class="box-title">List of Faculty</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body table-responsive no-padding">
+
+						<table id="table" class="table table-hover" width="100%"></table>
+
+
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+		</div>
+	</div>
 
 
 </body>
@@ -34,54 +35,61 @@
 
 <div layout:fragment="content-script">
 
+	<script>
+		function initTable() {
+			return $('.table').dataTable();
+		}
 
-<script>
+		function tableActions() {
+			//var table = initTable();
 
-	function initTable () {
-	  return $('.table').dataTable();
-	}
-	 
-	function tableActions () {
-	  //var table = initTable();
-	 
-	  // perform API operations with `table`
-	  // ...
-	  
-	  
-		var dataSet = [
-		    [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
-		    [ "Garrett Winters", "Accountant", "Tokyo", "8422", "2011/07/25", "$170,750" ]
-		];
-	  
+			// perform API operations with `table`
+			// ...
 
-		$('.table').DataTable( {
-	        //data: dataSet,
-	        "ajax": {
-	            "url": "/api/applicants/",
-	            "data": function ( data ) {
-		            	console.log(data);
-		 				//process data before sent to server.
-		         }},
-	        "columns": [
+			var dataSet = [
+					[ "Tiger Nixon", "System Architect", "Edinburgh", "5421",
+							"2011/04/25", "$320,800" ],
+					[ "Garrett Winters", "Accountant", "Tokyo", "8422",
+							"2011/07/25", "$170,750" ] ];
 
-	            { title: "Name", data: 'name'  },
-	            { title: "Position", data: 'email'  },
-	            { title: "Office", data: 'mobile' },
-	            { title: "Extn.", data: 'gender'},
-	            { title: "Start date", data: 'experience' },
-	            { title: "Salary", data: 'password'},
-	            
-	        ],
-	    } );
+			$('.table').DataTable({
+				//data: dataSet,
+				"ajax" : {
+					"url" : "/api/applicants/",
+					"data" : function(data) {
+						console.log(data);
+						//process data before sent to server.
+					}
+				},
+				"columns" : [
 
-		  
-	}
+				{
+					title : "Name",
+					data : 'name'
+				}, {
+					title : "Position",
+					data : 'email'
+				}, {
+					title : "Office",
+					data : 'mobile'
+				}, {
+					title : "Extn.",
+					data : 'gender'
+				}, {
+					title : "Start date",
+					data : 'experience'
+				}, {
+					title : "Salary",
+					data : 'password'
+				},
 
-	tableActions();
-	
+				],
+			});
 
+		}
 
-</script>
+		tableActions();
+	</script>
 
 
 </div>

@@ -24,4 +24,9 @@ public class ApplicantServiceImpl implements ApplicantService {
 		return applicantDao.listApplicants();
 	}
 
+	@Override
+	public Integer applicantCount() {
+		return applicantDao.applicantCount();
+	}
+
 }

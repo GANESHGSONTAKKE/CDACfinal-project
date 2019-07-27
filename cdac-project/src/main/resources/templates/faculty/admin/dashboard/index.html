@@ -1,16 +1,44 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="faculty/admin/layout">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="faculty/admin/layout">
 <head>
-    <title>Dashboard</title>
+<title>Dashboard</title>
 </head>
 <body>
 
 
 
-<div layout:fragment="content">
-    CDAC Dashboard
-</div>
+	<div layout:fragment="content">
+		<b>CDAC Dashboard</b>
+		<div class="row">
+			<!-- <div class="col-md-3 col col-sm-6 col-xs-12">
+				<div class="info-box">
+					<span class="info-box-icon bg-yellow"><i
+						class="ion ion-ios-people-outline"></i></span>
+					<div class="info-box-content">
+						<span class="info-box-text">Applicants</span> <span
+							class="info-box-number" th:text="${applicantCount}"></span>
+					</div>
+					/.info-box-content
+				</div>
+			</div> -->
+			<div class="col-md-3 col col-sm-6 col-xs-12">
+				<div class="small-box bg-yellow">
+					<div class="inner">
+						<h3 th:text="${applicantCount}"></h3>
 
+						<p>Applications</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-person-add"></i>
+					</div>
+					<a href="/fadmin/listApplicant" class="small-box-footer"> More
+						info <i class="fa fa-arrow-circle-right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
 
+	</div>
 </body>
 </html>

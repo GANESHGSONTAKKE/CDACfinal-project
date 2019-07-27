@@ -12,4 +12,7 @@ public interface ApplicantService {
 	//List all applicants (REST)
 	public List<Applicant> listApplicants();
 	
+	//Count of applicants
+	public Integer applicantCount();
+	
 }

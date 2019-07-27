@@ -4,13 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cdac.project.faculty.model.Applicant;
 import com.cdac.project.faculty.repository.ApplicantDaoImpl;
+import com.cdac.project.faculty.service.ApplicantService;
 
 @Controller
 public class FacultyRouteController {
 
+	@Autowired
+	private ApplicantService applicantService;
+	
     @RequestMapping("/")
     public String indexApplicant() {
         return "faculty/applicant/dashboard/index";
@@ -41,7 +46,11 @@ public class FacultyRouteController {
     // Admin Side Routes
     
     @RequestMapping("/fadmin")
-    public String indexAdmin() {
+    public String indexAdmin(Model model) {
+    	//ModelAndView mv=new ModelAndView();
+    	//mv.setView()
+    	Integer applicantCount=applicantService.applicantCount();
+    	model.addAttribute("applicantCount",applicantCount);
         return "faculty/admin/dashboard/index";
     }
     
@@ -64,19 +73,18 @@ public class FacultyRouteController {
     
 
     
-	@Autowired
-	ApplicantDaoImpl c;
-	
-    @RequestMapping("/insert")
-    public String insert() {
-    	
-    	System.out.print("Helllll");
-    	Applicant obj = new Applicant("amit@gmail.com", "98989098980", "password");
-    	
-    	c.addApplicant(obj);
-    	
-		return "Page inserted";
-    	
-    }
+
+	/*
+	 * @RequestMapping("/insert") public String insert() {
+	 * 
+	 * System.out.print("Helllll"); Applicant obj = new Applicant("amit@gmail.com",
+	 * "98989098980", "password");
+	 * 
+	 * c.addApplicant(obj);
+	 * 
+	 * return "Page inserted";
+	 * 
+	 * }
+	 */
 
 }

@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.stereotype.Repository;
 
 import com.cdac.project.faculty.model.Applicant;
@@ -37,6 +38,15 @@ public class ApplicantDaoImpl implements ApplicantDao{
 		this.sessionFactory = this.entityManager.unwrap(Session.class).getSessionFactory();
 		Session session= this.sessionFactory.openSession();
 		return session.createQuery("from Applicant").list();
+	}
+
+	@Override
+	@Transactional
+	public Integer applicantCount() {
+		this.sessionFactory = this.entityManager.unwrap(Session.class).getSessionFactory();
+		Session session= this.sessionFactory.openSession();
+		Integer count = ((Long)session.createQuery("select count(*) from Applicant").uniqueResult()).intValue();
+		return count;
 	}
 
 
