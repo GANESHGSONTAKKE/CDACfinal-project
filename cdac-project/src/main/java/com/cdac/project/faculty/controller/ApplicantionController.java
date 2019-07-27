@@ -26,4 +26,9 @@ public class ApplicantionController {
 	}
 	
 	
+	@RequestMapping(value = "/signupApplicant",method=RequestMethod.POST)
+	public String signupApplicant() {
+		return "faculty/applicant/signup";
+	}
+	
 }

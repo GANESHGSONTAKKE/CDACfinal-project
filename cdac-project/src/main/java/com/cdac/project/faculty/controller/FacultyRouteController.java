@@ -17,7 +17,8 @@ public class FacultyRouteController {
     }
     
     @RequestMapping("/signup")
-    public String signup() {
+    public String signup(Model model) {
+    	model.addAttribute("applicant", new Applicant());
         return "faculty/applicant/signup";
     }
     

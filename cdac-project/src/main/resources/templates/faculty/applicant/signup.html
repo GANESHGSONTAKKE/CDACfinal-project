@@ -32,7 +32,7 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Please signup here.</p>
+        <p class="login-box-msg">New Applicants signup here.</p>
 
         <div th:if="${param.error}">
             <div class="callout callout-danger">
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <form th:action="@{/signup}" method="post">
+        <form th:action="@{/signupApplicant}" method="post">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" name="username" placeholder="username"/>
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>

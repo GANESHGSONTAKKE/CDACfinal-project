@@ -1,5 +1,7 @@
 package com.cdac.project.faculty.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Override
 	public Applicant addApplicant(Applicant applicant) {
 		return applicantDao.addApplicant(applicant);
+	}
+
+	@Override
+	public List<Applicant> listApplicants() {
+		return applicantDao.listApplicants();
 	}
 
 }

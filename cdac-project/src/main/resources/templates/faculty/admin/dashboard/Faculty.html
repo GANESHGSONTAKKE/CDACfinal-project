@@ -16,33 +16,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tbody><tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Mobile NO</th>
-                  <th>Role</th>
-                
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                  <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr> 
-              </tbody></table>
+            
+            <table id="table" class="table table-hover" width="100%"></table>
+            
+              
             </div>
             <!-- /.box-body -->
           </div>
@@ -53,4 +30,61 @@
 
 
 </body>
+
+
+<div layout:fragment="content-script">
+
+
+<script>
+
+	function initTable () {
+	  return $('.table').dataTable();
+	}
+	 
+	function tableActions () {
+	  //var table = initTable();
+	 
+	  // perform API operations with `table`
+	  // ...
+	  
+	  
+		var dataSet = [
+		    [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
+		    [ "Garrett Winters", "Accountant", "Tokyo", "8422", "2011/07/25", "$170,750" ]
+		];
+	  
+
+		$('.table').DataTable( {
+	        //data: dataSet,
+	        "ajax": {
+	            "url": "/api/applicants/",
+	            "data": function ( data ) {
+		            	console.log(data);
+		 				//process data before sent to server.
+		         }},
+	        "columns": [
+
+	            { title: "Name", data: 'name'  },
+	            { title: "Position", data: 'email'  },
+	            { title: "Office", data: 'mobile' },
+	            { title: "Extn.", data: 'gender'},
+	            { title: "Start date", data: 'experience' },
+	            { title: "Salary", data: 'password'},
+	            
+	        ],
+	    } );
+
+		  
+	}
+
+	tableActions();
+	
+
+
+</script>
+
+
+</div>
+
+
 </html>

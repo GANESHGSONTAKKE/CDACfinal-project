@@ -1,6 +1,8 @@
 package com.cdac.project.faculty.repository;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -27,6 +29,14 @@ public class ApplicantDaoImpl implements ApplicantDao{
 		Session session = this.sessionFactory.openSession();
 		session.save(applicant);
 		return applicant;
+	}
+
+	@Override
+	@Transactional
+	public List<Applicant> listApplicants() {
+		this.sessionFactory = this.entityManager.unwrap(Session.class).getSessionFactory();
+		Session session= this.sessionFactory.openSession();
+		return session.createQuery("from Applicant").list();
 	}
 
 
